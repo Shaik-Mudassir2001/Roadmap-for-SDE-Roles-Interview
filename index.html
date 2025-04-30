@@ -3,232 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-32x32.png">
-    <link rel="manifest" href="favicon_io/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png"> <link rel="manifest" href="favicon_io/site.webmanifest">
+
     <title>Roadmap for SDE Roles Interview</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-        body {
-            /* Padding might be needed if progress bar overlaps content */
-            /* padding-top: 70px; /* Adjust as needed based on progress bar height */
-        }
-        .bg-dark-section-1 { background-color: #2c3034 !important; }
-        .bg-dark-section-2 { background-color: #2a3a4a !important; }
-        .bg-dark-section-3 { background-color: #403a4a !important; }
-        .bg-dark-section-4 { background-color: #4a3a3a !important; }
-        .bg-dark-section-5 { background-color: #2c3e50 !important; }
-        .bg-dark-section-6 { background-color: #463f3a !important; }
-        .bg-dark-section-7 { background-color: #1d3557 !important; }
-        .bg-dark-section-8 { background-color: #3c0d4a !important; }
-        .bg-dark-section-9 { background-color: #581845 !important; }
-        .bg-dark-section-10 { background-color: #2a4a44 !important; }
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css">
 
-        .main-title {
-            font-size: 2.6em;
-            font-weight: 600;
-            color: #e9ecef;
-            padding: 15px 0;
-            margin-top: 20px; /* Add margin top since body padding removed */
-            margin-bottom: 0.5rem !important;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        .intro-text {
-            font-size: 1.25em;
-            color: #adb5bd;
-            margin-bottom: 2.5rem !important;
-            max-width: 850px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 15px 20px;
-            background-color: rgba(255, 255, 255, 0.03);
-            border-left: 4px solid #0d6efd;
-            border-radius: 0 5px 5px 0;
-            text-align: center !important;
-        }
-        /* Progress Bar Styling - Sticky */
-        .progress-container {
-            position: sticky;
-            top: 10px;
-            z-index: 1030;
-            width: 100%; /* Let it span width within container */
-            max-width: 100%;
-            margin-bottom: 2.5rem; /* Space below when not sticky */
-            background-color: rgba(33, 37, 41, 0.95);
-            padding: 10px 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-        }
-         #progress-label-text {
-             text-align: center;
-             color: #ced4da;
-             font-size: 0.9em;
-             margin-bottom: 5px;
-             display: block;
-         }
-        .progress {
-             position: relative;
-             height: 28px;
-             font-size: 0.95em;
-             background-color: #495057 !important;
-             border: 1px solid #6c757d;
-             padding: 0;
-             border-radius: .375rem;
-             overflow: visible;
-             margin-top: 5px;
-        }
-        #roadmap-progress-bar {
-             background-color: #6c757d !important;
-             transition: width 0.4s ease;
-             display: block;
-             border-radius: 0;
-             height: 100%;
-             color: transparent;
-        }
-        #progress-bar-text {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 1em;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
-            pointer-events: none;
-        }
-
-         @media (max-width: 576px) {
-             .main-title { font-size: 2.1em; }
-             .intro-text { font-size: 1.0em; padding: 10px 15px; border-left-width: 3px; }
-             .progress-container { width: 95%; padding: 5px 10px;} /* Adjust width */
-             .progress { height: 22px; font-size: 0.85em;}
-             #progress-bar-text { font-size: 0.85em; }
-         }
-
-        .card-header {
-            font-size: 1.4em;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-        }
-
-        .step-container { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-
-        .topic-badge.completed {
-            text-decoration: line-through;
-            opacity: 0.6;
-        }
-        .topic-checkbox:disabled + .topic-badge {
-             opacity: 0.6;
-             cursor: default;
-        }
-
-        .topic-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background-color: rgba(255, 255, 255, 0.1) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            border-radius: 5px;
-            padding: 0.6em 1em;
-            min-width: 120px;
-            flex-grow: 1;
-            transition: transform 0.2s ease, opacity 0.3s ease;
-        }
-        .topic-item:hover {
-            transform: scale(1.03);
-            z-index: 10;
-            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-            background-color: rgba(255, 255, 255, 0.15) !important;
-        }
-        .topic-badge { /* This is the <label> */
-            cursor: pointer;
-            font-size: 1.05em;
-            text-align: center;
-            color: #e9ecef !important;
-            background-color: transparent !important;
-            border: none !important;
-            padding: 0 !important;
-            flex-grow: 1;
-            margin: 0;
-            display: block;
-        }
-         .topic-checkbox {
-             flex-shrink: 0;
-             width: 1.3em;
-             height: 1.3em;
-             cursor: pointer;
-             vertical-align: middle;
-         }
-         .topic-checkbox:disabled {
-            cursor: not-allowed;
-         }
-
-         .final-step-badge {
-             background-color: #198754 !important; color: white !important;
-             border: 1px solid #198754 !important; font-size: 1.1em !important;
-             padding: 0.6em 1em !important;
-         }
-
-         .section-connector::after {
-            content: '⬇';
-            display: block;
-            text-align: center;
-            font-size: 2.5em;
-            color: #6c757d;
-            margin-top: 10px;
-            margin-bottom: 5px;
-            line-height: 1;
-        }
-         .card-subtitle { margin-top: 1rem; margin-bottom: 1rem; color: #adb5bd; font-weight: 500; font-size: 1.1em; }
-         .final-step { font-weight: bold; }
-
-         #topicModal .modal-body p { margin-bottom: 0.5rem; }
-         #topicModal .modal-body h6 { margin-top: 1rem; color: #0dcaf0; }
-         #topicModal .modal-body ul { padding-left: 20px; list-style: none; margin-bottom: 1.5rem;}
-         #topicModal .modal-body li { margin-bottom: 0.3rem; }
-         #downloadNotesBtn { margin-top: 1.5rem; }
-
-         .advice-section h5 {
-             color: #0dcaf0;
-             margin-top: 1.5rem;
-             margin-bottom: 0.75rem;
-         }
-         .advice-section p, .advice-section li {
-            color: #ced4da;
-            font-size: 1.05em;
-         }
-         .advice-section ul {
-             list-style: none;
-             padding-left: 0;
-         }
-          .advice-section li {
-             margin-bottom: 0.5rem;
-         }
-         .advice-section li svg {
-             margin-right: 8px;
-             vertical-align: middle;
-         }
-
-    </style>
 </head>
 <body>
 
     <div class="container">
 
         <h1 class="text-center main-title">Roadmap for SDE Roles Interview</h1>
-
         <p class="intro-text">
             <br><br>Strictly follow these steps without procrastination.<br><br>Inshallah, you will definitely achieve the goal. This roadmap helps you get into dream product-based companies like Google, Microsoft, Facebook, Amazon, Oracle, Uber, Ola, Flipkart, Swiggy, etc., for the role of Software Development Engineer (SDE), with decent CTC packages ranging from 7 LPA to 1 Cr +.<br><br>Coding is essential for getting into software development, so prepare in at least one object-oriented language, for example, C++ or Java.<br><br>This roadmap uses C++, covering OOPs concepts and the C++ Standard Template Library (STL).<br><br>
         </p>
+
         <div class="progress-container">
             <div id="progress-label-text">Progress: 0 / 0</div>
             <div class="progress" role="progressbar" aria-label="Roadmap completion progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" id="roadmap-progress-bar" style="width: 0%"></div>
+                <div class="progress-bar" id="roadmap-progress-bar" style="width: 0%"></div>
                 <span id="progress-bar-text">0%</span>
             </div>
         </div>
@@ -287,7 +86,7 @@
                  <div class="card-body bg-dark-section-3">
                       <h6 class="card-subtitle mb-2 text-center">Linear Data Structures</h6>
                       <div class="step-container mb-3">
-                          <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-arrays"><label for="check-arrays" class="topic-badge" data-topic="Arrays & Strings">Arrays & Strings</label></div>
+                          <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-arrays-strings"><label for="check-arrays-strings" class="topic-badge" data-topic="Arrays & Strings">Arrays & Strings</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-ll"><label for="check-ll" class="topic-badge" data-topic="Linked Lists">Linked Lists</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-stack"><label for="check-stack" class="topic-badge" data-topic="Stack">Stack</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-queue"><label for="check-queue" class="topic-badge" data-topic="Queue">Queue</label></div>
@@ -295,24 +94,20 @@
                       </div>
                       <h6 class="card-subtitle mb-2 text-center">Non-Linear Data Structures</h6>
                       <div class="step-container mb-3">
-                         <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-trees"><label for="check-trees" class="topic-badge" data-topic="Trees">Trees (Binary, BST, Heap, Trie)</label></div>
-                         <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-graphs"><label for="check-graphs" class="topic-badge" data-topic="Graphs">Graphs (Adj List/Matrix, Traversals)</label></div>
+                         <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-trees"><label for="check-trees" class="topic-badge" data-topic="Trees">Trees</label></div>
+                         <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-graphs"><label for="check-graphs" class="topic-badge" data-topic="Graphs">Graphs</label></div>
                       </div>
                        <h6 class="card-subtitle mb-2 text-center">Core Algorithms</h6>
                       <div class="step-container">
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-sorting"><label for="check-sorting" class="topic-badge" data-topic="Sorting">Sorting</label></div>
-                          <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-searching"><label for="check-searching" class="topic-badge" data-topic="Searching">Searching (Binary)</label></div>
-                          <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-recursion"><label for="check-recursion" class="topic-badge" data-topic="Recursion">Recursion/Backtracking</label></div>
+                          <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-searching"><label for="check-searching" class="topic-badge" data-topic="Searching (Binary)">Searching (Binary)</label></div>
+                          <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-recursion"><label for="check-recursion" class="topic-badge" data-topic="Recursion/Backtracking">Recursion/Backtracking</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-dp"><label for="check-dp" class="topic-badge" data-topic="Dynamic Programming">Dynamic Programming</label></div>
-                          <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-greedy"><label for="check-greedy" class="topic-badge" data-topic="Greedy">Greedy Algorithms</label></div>
+                          <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-greedy"><label for="check-greedy" class="topic-badge" data-topic="Greedy Algorithms">Greedy Algorithms</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-sliding"><label for="check-sliding" class="topic-badge" data-topic="Sliding Window">Sliding Window</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-two-pointers"><label for="check-two-pointers" class="topic-badge" data-topic="Two Pointers">Two Pointers</label></div>
                       </div>
-                 </div>
-             </div>
-         </div>
-
-         <div class="roadmap-section mb-3 section-connector">
+                 </div> </div> </div> <div class="roadmap-section mb-3 section-connector">
               <div class="card shadow-sm">
                   <div class="card-header text-center bg-danger">
                       4. Practice & Next Steps
@@ -383,7 +178,7 @@
               </div>
          </div>
 
-         <div class="roadmap-section mb-3 section-connector">
+        <div class="roadmap-section mb-3 section-connector">
               <div class="card shadow-sm">
                   <div class="card-header text-center" style="background-color: #00b4d8; color: white;">
                       7. Computer Networks
@@ -465,7 +260,7 @@
               </div>
          </div>
 
-          <div class="roadmap-section mb-3">
+         <div class="roadmap-section mb-3">
               <div class="card shadow-sm border-success">
                   <div class="card-header text-center bg-dark">
                       10. End Goal
@@ -478,9 +273,7 @@
               </div>
           </div>
 
-    </div>
-
-    <div class="modal fade" id="topicModal" tabindex="-1" aria-labelledby="topicModalLabel" aria-hidden="true">
+    </div> <div class="modal fade" id="topicModal" tabindex="-1" aria-labelledby="topicModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
@@ -491,9 +284,11 @@
                     <p id="topicExplanation"></p>
                     <div id="topicLinksContainer" style="display: none;">
                         <hr>
-                        <h6><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/></svg> Resources:</h6>
+                        <h6><i class="bi bi-link-45deg"></i> Resources:</h6>
                         <ul id="topicLinksList" style="list-style: none; padding-left: 0;"></ul>
                     </div>
+                    <div id="modalProblemTableContainer">
+                        </div>
                     <div id="downloadNotesContainer" class="text-center" style="margin-top: 1.5rem;">
                         <a href="#" class="btn btn-sm btn-outline-secondary" id="downloadNotesBtn" title="Handwritten notes feature coming soon!">📝 Download Notes (Coming Soon)</a>
                     </div>
@@ -506,296 +301,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-    <script>
-        const topicData = {
-            "Basics": { explanation: "Core C++ syntax including variables, data types (int, float, char, bool), operators (arithmetic, relational, logical), and basic control flow (if/else, loops).", links: [ { title: "C++ Basic Exercises (GFG)", url: "https://www.geeksforgeeks.org/cpp-exercises/" }, { title: "Basic Data Types (HackerRank)", url: "https://www.hackerrank.com/challenges/c-tutorial-basic-data-types/problem" } ] },
-            "Functions": { explanation: "Reusable blocks of code. Key concepts include function declaration, definition, parameters, return types, function overloading (multiple functions with the same name but different parameters), and default arguments.", links: [ { title: "C++ Functions (GFG)", url: "https://www.geeksforgeeks.org/functions-in-cpp/" }, { title: "Functions (HackerRank)", url: "https://www.hackerrank.com/challenges/c-tutorial-functions/problem" } ] },
-            "Pointers & Refs": { explanation: "Pointers store memory addresses, allowing indirect access and manipulation of data. References provide an alias (another name) for an existing variable. Both are crucial for dynamic memory management and efficient function arguments.", links: [ { title: "Pointers & References Overview (GFG)", url: "https://www.geeksforgeeks.org/pointers-and-references-in-c/" }, { title: "Pointers Practice Problem (GFG)", url: "https://www.geeksforgeeks.org/problems/c-pointers-set-1introduction/0" }, { title: "Pointers Quiz (GFG)", url: "https://www.geeksforgeeks.org/quizzes/quiz-cpp-pointers/" }, { title: "Pointer (HackerRank)", url: "https://www.hackerrank.com/challenges/c-tutorial-pointer/problem" } ] },
-            "Memory Mgmt": { explanation: "Understanding stack (automatic memory for local variables) vs. heap (dynamic memory allocated using `new` and deallocated using `delete`). Proper heap management prevents memory leaks.", links: [ { title: "Memory Management in C++ (GFG)", url: "https://www.geeksforgeeks.org/memory-management-in-cpp/" } ] },
-            "Classes & Objects": { explanation: "Classes are blueprints for creating objects. Objects are instances of classes, encapsulating data (attributes) and behavior (methods).", links: [ { title: "Classes and Objects (HackerRank)", url: "https://www.hackerrank.com/challenges/c-tutorial-class/problem" }, { title: "Classes & Objects Practice (HackerRank)", url: "https://codersdaily.in/courses/hackerrank-cpp-solutions/classes-and-objects-in-cpp-solution" } ] },
-            "Constructors/Destructors": { explanation: "Constructors are special methods called when an object is created, often used for initialization. Destructors are called when an object is destroyed, used for cleanup (like deallocating memory).", links: [ { title: "Constructors in C++ (GFG)", url: "https://www.geeksforgeeks.org/constructors-c/" } ] },
-            "Inheritance": { explanation: "Allows a class (derived/child) to inherit properties and methods from another class (base/parent), promoting code reuse.", links: [ { title: "Inheritance (HackerRank)", url: "https://www.hackerrank.com/challenges/inheritance-introduction/problem" }, { title: "Inheritance in C++ (GFG)", url: "https://www.geeksforgeeks.org/inheritance-in-c/" } ] },
-            "Polymorphism": { explanation: "Allows objects of different classes to respond to the same message (method call) in different ways. Achieved through function overloading (compile-time) and virtual functions (run-time).", links: [ { title: "Polymorphism in C++ (GFG)", url: "https://www.geeksforgeeks.org/polymorphism-in-cpp/" }, { title: "Virtual Functions (HackerRank)", url: "https://www.hackerrank.com/challenges/virtual-functions/problem" } ] },
-            "Encapsulation/Abstraction": { explanation: "Encapsulation bundles data and methods within a class, hiding internal details (using access specifiers like private, protected, public). Abstraction exposes essential features while hiding complexity.", links: [ { title: "Encapsulation in C++ (GFG)", url: "https://www.geeksforgeeks.org/encapsulation-in-cpp/" } ] },
-            "Why use STL?": { explanation: "The Standard Template Library provides pre-built, highly optimized, and tested components (containers, algorithms, iterators) saving development time and improving performance." },
-            "Components Overview": { explanation: "STL has three main parts: Containers (like vector, map, set) to store data, Algorithms (like sort, find, count) to operate on data, and Iterators to traverse containers." },
-            "Containers": { explanation: "Generic data structures provided by STL for storing collections of objects (e.g., vector, list, map, set). They manage memory and provide member functions for operations.", links: [ { title: "Containers Overview (GFG)", url: "https://www.geeksforgeeks.org/containers-cpp-stl/" }, { title: "STL Practice Problems (GFG)", url: "https://www.geeksforgeeks.org/cpp-stl-practice-problems/" }, { title: "STL Domain (HackerRank)", url: "https://www.hackerrank.com/domains/cpp/stl" } ] },
-            "Iterators": { explanation: "Objects (like pointers) used to point to and traverse elements within STL containers.", links: [ { title: "Iterators Tutorial (GFG)", url: "https://www.geeksforgeeks.org/iterators-c-stl/" }, { title: "Introduction to Iterators (GFG)", url: "https://www.geeksforgeeks.org/introduction-iterators-c/" } ] },
-            "Algorithms": { explanation: "Functions provided by STL (in `<algorithm>` header) to perform common operations like sorting, searching, counting, and manipulating elements within containers.", links: [ { title: "STL Algorithms Practice (GFG)", url: "https://www.geeksforgeeks.org/cpp-stl-practice-problems/" }, { title: "C++ Algorithm Library (Work@Tech)", url: "https://workat.tech/problem-solving/tutorial/cpp-stl-algorithm-library-k47c3x7dw8hs" }, { title: "Sorting Practice (CodeChef)", url: "https://www.codechef.com/practice/sorting" } ] },
-            "Sequence Containers": { explanation: "Ordered collections like `vector` (dynamic array), `list` (doubly-linked list), `deque` (double-ended queue).", links: [ { title: "Vector Guide (LeetCode Discuss)", url: "https://leetcode.com/discuss/study-guide/4039616/C%2B%2B-Vector" }, { title: "STL Practice Problems (GFG)", url: "https://www.geeksforgeeks.org/cpp-stl-practice-problems/" } ] },
-            "Associative Containers": { explanation: "Sorted containers like `set` (unique elements), `map` (key-value pairs), `multiset`, `multimap` (allow duplicates). Typically implemented using balanced trees.", links: [ { title: "Map Practice Problem (GFG)", url: "https://www.geeksforgeeks.org/problems/c-stl-set-3-map/0" }, { title: "Map Tutorial (Programiz)", url: "https://www.programiz.com/cpp-programming/map" }, { title: "Set Practice Problem (HackerRank)", url: "https://www.hackerrank.com/challenges/cpp-sets/problem" } ] },
-            "Unordered Containers": { explanation: "Unsorted associative containers based on hash tables for fast average-case access: `unordered_set`, `unordered_map`, `unordered_multiset`, `unordered_multimap`.", links: [ { title: "Unordered Set (GFG)", url: "https://www.geeksforgeeks.org/unordered_set-in-cpp-stl/" }, { title: "Unordered Map (Programiz)", url: "https://www.programiz.com/cpp-programming/unordered-map" }, { title: "Unordered Set Practice (CodeChef)", url: "https://www.codechef.com/learn/course/cpp-stl/CSTL05/problems/UNORDEREDSET"} ] },
-            "Arrays & Strings": { explanation: "Arrays store elements of the same type in contiguous memory. Strings are typically sequences of characters.", links: [ { title: "Array Data Structure (GFG)", url: "https://www.geeksforgeeks.org/introduction-to-arrays-data-structure-and-algorithm-tutorials/" }, { title: "String Data Structure (GFG)", url: "https://www.geeksforgeeks.org/string-data-structure/" } ] },
-            "Linked Lists": { explanation: "Linear data structure where elements (nodes) are linked using pointers.", links: [ { title: "Linked List Introduction (GFG)", url: "https://www.geeksforgeeks.org/introduction-to-linked-list-data-structure/" } ] },
-            "Stack": { explanation: "Linear data structure following Last-In, First-Out (LIFO) principle.", links: [ { title: "Stack Data Structure (GFG)", url: "https://www.geeksforgeeks.org/stack-data-structure/" } ] },
-            "Queue": { explanation: "Linear data structure following First-In, First-Out (FIFO) principle.", links: [ { title: "Queue Introduction (GFG)", url: "https://www.geeksforgeeks.org/introduction-to-queue-data-structure-and-algorithm-tutorials/" } ] },
-            "Deque": { explanation: "Double-Ended Queue allows insertion and deletion at both front and rear ends.", links: [ { title: "Deque Overview (GFG)", url: "https://www.geeksforgeeks.org/deque-meaning-in-dsa/" }, { title: "Deque Implementation (GFG)", url: "https://www.geeksforgeeks.org/implementation-deque-using-doubly-linked-list/" } ] },
-            "Trees": { explanation: "Hierarchical data structure with a root node and child nodes. Includes Binary Trees, BST, Heaps, Tries, etc.", links: [ { title: "Tree Data Structure (GFG)", url: "https://www.geeksforgeeks.org/tree-data-structure/" } ] },
-            "Graphs": { explanation: "Non-linear data structure consisting of nodes (vertices) and edges. Used to model networks.", links: [ { title: "Graph Introduction (GFG)", url: "https://www.geeksforgeeks.org/introduction-to-graphs-data-structure-and-algorithm-tutorials/" }, { title: "Graph Algorithms & Problems (GFG)", url: "https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/" } ] },
-            "Sorting": { explanation: "Algorithms used to arrange elements in a specific order (e.g., Bubble Sort, Merge Sort, Quick Sort).", links: [ { title: "Sorting Algorithms Analysis (GFG)", url: "https://www.geeksforgeeks.org/analysis-of-different-sorting-techniques/" } ] },
-            "Searching": { explanation: "Algorithms used to find specific elements (e.g., Linear Search, Binary Search).", links: [ { title: "Searching Algorithms Intro (GFG)", url: "https://www.geeksforgeeks.org/introduction-to-searching-data-structure-and-algorithm-tutorial/" } ] },
-            "Recursion": { explanation: "Technique where a function calls itself to solve smaller instances of the same problem. Often used with Backtracking.", links: [ { title: "Recursion Algorithms (GFG)", url: "https://www.geeksforgeeks.org/recursion-algorithms/" }, { title: "Introduction to Backtracking (GFG)", url: "https://www.geeksforgeeks.org/introduction-to-backtracking-2/" } ] },
-            "Dynamic Programming": { explanation: "Technique for solving complex problems by breaking them into overlapping subproblems and storing results.", links: [ { title: "Dynamic Programming Introduction (GFG)", url: "https://www.geeksforgeeks.org/dynamic-programming-meaning-in-dsa/" }, { title: "How DP Works (GFG)", url: "https://www.geeksforgeeks.org/how-does-dynamic-programming-work/" } ] },
-            "Greedy": { explanation: "Algorithmic paradigm that makes the locally optimal choice at each step.", links: [ { title: "Greedy Algorithms Introduction (GFG)", url: "https://www.geeksforgeeks.org/introduction-to-greedy-algorithm-data-structures-and-algorithm-tutorials/" } ] },
-            "Sliding Window": { explanation: "Technique involving a window that slides over data to solve problems on contiguous subsets.", links: [ { title: "Sliding Window Technique (GFG)", url: "https://www.geeksforgeeks.org/window-sliding-technique/" } ] },
-            "Two Pointers": { explanation: "Technique using two pointers moving through a data structure to solve problems efficiently.", links: [ { title: "Two Pointers Technique (GFG)", url: "https://www.geeksforgeeks.org/two-pointers-technique/" }, {title: "DSA Tutorial (includes Two Pointers) (GFG)", url:"https://www.geeksforgeeks.org/dsa-tutorial-learn-data-structures-and-algorithms/"} ] },
-            "C++ Practice": { explanation: "General C++ practice involves solving a variety of problems to solidify understanding of syntax, logic, and common patterns.", links: [ { title: "C++ Exercises (GFG)", url: "https://www.geeksforgeeks.org/cpp-exercises/" }, { title: "C++ Coding Interview Questions (GFG)", url: "https://www.geeksforgeeks.org/cpp-coding-interview-questions-and-answers/" }, { title: "C++ Practice Portal (GFG)", url: "https://www.geeksforgeeks.org/explore?category=CPP" } ] },
-            "STL Mastery": { explanation: "Gaining proficiency in using the Standard Template Library effectively, understanding different containers, algorithms, and iterators, and when to use them.", links: [ { title: "C++ STL Practice Problems (GFG)", url: "https://www.geeksforgeeks.org/cpp-stl-practice-problems/" }, { title: "C++ Standard Template Library Overview (GFG)", url: "https://www.geeksforgeeks.org/the-c-standard-template-library-stl/" } ] },
-            "DSA Sheet (Striver)": { explanation: "A popular curated list of Data Structures and Algorithms problems designed to prepare for technical interviews, created by Raj 'Striver' Vikramaditya.", links: [ { title: "Striver's SDE Sheet (takeUforward)", url: "https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/" }, { title: "GFG SDE Sheet (Similar)", url: "https://www.geeksforgeeks.org/sde-sheet-a-complete-guide-for-sde-preparation/" } ] },
-            "LeetCode / Contests": { explanation: "Platforms like LeetCode offer a vast collection of coding problems and host regular competitive programming contests to hone problem-solving skills under timed conditions.", links: [ { title: "LeetCode Contests Experience (GFG Article)", url: "https://www.geeksforgeeks.org/leetcode-contests-experience/" }, { title: "LeetCode Contests", url: "https://leetcode.com/contest/" } ] },
-            "Process vs Thread": { explanation: "A process is an independent program execution with its own memory space. A thread is a lightweight component within a process, sharing memory space.", links: [ { title: "Process vs Thread (GFG)", url: "https://www.geeksforgeeks.org/difference-between-process-and-thread/" } ] },
-            "Concurrency": { explanation: "Managing simultaneous execution of multiple tasks (processes or threads) to maximize resource utilization.", links: [ { title: "Process Synchronization (GFG)", url: "https://www.geeksforgeeks.org/introduction-of-process-synchronization/" } ] },
-            "Synchronization": { explanation: "Mechanisms (like Mutexes, Semaphores) to coordinate access to shared resources among concurrent processes/threads, preventing race conditions.", links: [ { title: "Process Synchronization (GFG)", url: "https://www.geeksforgeeks.org/introduction-of-process-synchronization/" } ] },
-            "Deadlock": { explanation: "A situation where two or more processes are blocked indefinitely, each waiting for a resource held by another.", links: [ { title: "Deadlock Introduction (GFG)", url: "https://www.geeksforgeeks.org/introduction-of-deadlock-in-operating-system/" } ] },
-            "Context Switching": { explanation: "The process of saving the state of one process/thread and loading the state of another for execution by the CPU.", links: [ { title: "Context Switching (GFG)", url: "https://www.geeksforgeeks.org/context-switching-in-operating-system/" } ] },
-            "Scheduling Algorithms": { explanation: "Algorithms used by the OS to determine which process/thread gets CPU time (e.g., FCFS, SJF, Round Robin, Priority).", links: [ { title: "CPU Scheduling (GFG)", url: "https://www.geeksforgeeks.org/cpu-scheduling-in-operating-systems/" } ] },
-            "Memory Management": { explanation: "OS techniques for managing the computer's main memory (RAM), allocating it to processes and managing free space.", links: [ { title: "Memory Management Introduction (GFG)", url: "https://www.geeksforgeeks.org/memory-management-in-operating-system/"} ] },
-            "Virtual Memory": { explanation: "A technique allowing execution of processes larger than physical memory by using disk space as an extension of RAM (involves Paging/Segmentation).", links: [ { title: "Virtual Memory (GFG)", url: "https://www.geeksforgeeks.org/virtual-memory-in-operating-system/" } ] },
-            "File Systems": { explanation: "The method an OS uses to store, organize, and manage files and directories on storage devices.", links: [ { title: "File Systems (GFG)", url: "https://www.geeksforgeeks.org/file-systems-in-operating-system/" } ] },
-            "IPC": { explanation: "Inter-Process Communication: Mechanisms allowing different processes to communicate and share data (e.g., pipes, shared memory, sockets).", links: [ { title: "Interprocess Communication (IPC) (GFG)", url: "https://www.geeksforgeeks.org/inter-process-communication-ipc/" } ] },
-            "System Calls": { explanation: "Interface through which user programs request services from the operating system kernel.", links: [ { title: "System Call (GFG)", url: "https://www.geeksforgeeks.org/system-call-in-os/" } ] },
-            "Kernel vs User Space": { explanation: "Kernel space is where the OS core runs with full privileges; User space is where user applications run with restricted privileges.", links: [ { title: "User Mode vs Kernel Mode (GFG)", url: "https://www.geeksforgeeks.org/user-mode-and-kernel-mode-switching/" } ] },
-            "DBMS vs RDBMS": { explanation: "DBMS is general software for managing databases. RDBMS is a specific type of DBMS based on the relational model (tables).", links: [ { title: "DBMS vs RDBMS (GFG)", url: "https://www.geeksforgeeks.org/difference-between-dbms-and-rdbms/" } ] },
-            "Data Models": { explanation: "Conceptual structure defining logical relationships and constraints (e.g., Entity-Relationship Model).", links: [ { title: "DBMS ER Model (GFG)", url: "https://www.geeksforgeeks.org/entity-relationship-er-model/" } ] },
-            "Schema": { explanation: "The logical structure or blueprint of a database (e.g., table definitions, relationships). Includes levels like physical, logical, view.", links: [ { title: "Three Schema Architecture (GFG)", url: "https://www.geeksforgeeks.org/three-schema-architecture/" } ] },
-            "SQL": { explanation: "Structured Query Language: Standard language for interacting with relational databases (DDL, DML, DCL).", links: [ { title: "SQL Tutorial (GFG)", url: "https://www.geeksforgeeks.org/sql-tutorial/" } ] },
-            "Joins": { explanation: "SQL operation to combine rows from two or more tables based on a related column.", links: [ { title: "SQL Joins (GFG)", url: "https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/" } ] },
-            "Views": { explanation: "A virtual table based on the result-set of an SQL statement.", links: [ { title: "SQL Views (GFG)", url: "https://www.geeksforgeeks.org/sql-views/" } ] },
-            "Indexes": { explanation: "Data structure improving data retrieval speed on database tables at the cost of slower writes and more storage.", links: [ { title: "Indexing in Databases (GFG)", url: "https://www.geeksforgeeks.org/indexing-in-databases-set-1/" } ] },
-            "Keys": { explanation: "Attributes used to uniquely identify records (Primary Key) or establish links between tables (Foreign Key). Includes Super, Candidate keys.", links: [ { title: "Keys in DBMS (GFG)", url: "https://www.geeksforgeeks.org/keys-in-dbms/" } ] },
-            "Normalization": { explanation: "Process of organizing data in a database to reduce redundancy and improve data integrity (1NF, 2NF, 3NF, BCNF).", links: [ { title: "Normalization in DBMS (GFG)", url: "https://www.geeksforgeeks.org/normalization-in-dbms/" } ] },
-            "Denormalization": { explanation: "Intentionally introducing redundancy to improve read performance.", links: [ { title: "Denormalization (GFG)", url: "https://www.geeksforgeeks.org/denormalization-in-dbms/" } ] },
-            "ACID Properties": { explanation: "Properties (Atomicity, Consistency, Isolation, Durability) ensuring reliable database transactions.", links: [ { title: "ACID Properties (GFG)", url: "https://www.geeksforgeeks.org/acid-properties-in-dbms/" } ] },
-            "Transactions": { explanation: "A sequence of database operations performed as a single logical unit of work.", links: [ { title: "Transaction Management (GFG)", url: "https://www.geeksforgeeks.org/transaction-management-in-dbms/" } ] },
-            "Concurrency Control": { explanation: "Managing simultaneous operations by multiple users/transactions without interfering with each other.", links: [ { title: "Concurrency Control (GFG)", url: "https://www.geeksforgeeks.org/concurrency-control-in-dbms/" } ] },
-            "Query Optimization": { explanation: "Process by which the DBMS finds the most efficient way to execute a given SQL query.", links: [ { title: "Query Optimization (GFG)", url: "https://www.geeksforgeeks.org/query-optimization-in-dbms/" } ] },
-            "OSI & TCP/IP Models": { explanation: "Layered frameworks defining how network communication protocols interact. OSI has 7 layers, TCP/IP has 4/5.", links: [ { title: "Network Models (GFG)", url: "https://www.geeksforgeeks.org/computer-network-models/" } ] },
-            "Network Types": { explanation: "Classifications based on geographical scope (LAN, WAN, MAN, PAN).", links: [ { title: "Types of Computer Network (GFG)", url: "https://www.geeksforgeeks.org/types-of-computer-network/" } ] },
-            "Topologies": { explanation: "The physical or logical arrangement of nodes and connections in a network (Bus, Star, Ring, Mesh).", links: [ { title: "Network Topology (GFG)", url: "https://www.geeksforgeeks.org/types-of-network-topology/" } ] },
-            "IP Addressing": { explanation: "Unique numerical labels assigned to devices on a network (IPv4, IPv6).", links: [ { title: "IP Addressing Introduction (GFG)", url: "https://www.geeksforgeeks.org/ip-addressing-introduction/" } ] },
-            "Subnetting": { explanation: "Dividing a large network into smaller sub-networks.", links: [ { title: "Subnetting Introduction (GFG)", url: "https://www.geeksforgeeks.org/subnetting-in-computer-network/" } ] },
-            "DNS": { explanation: "Domain Name System: Translates human-readable domain names into machine-readable IP addresses.", links: [ { title: "Domain Name System (DNS) (GFG)", url: "https://www.geeksforgeeks.org/domain-name-system-dns-in-application-layer/" } ] },
-            "TCP vs UDP": { explanation: "Core transport layer protocols. TCP is connection-oriented and reliable; UDP is connectionless and faster but less reliable.", links: [ { title: "TCP vs UDP (GFG)", url: "https://www.geeksforgeeks.org/tcp-udp-ip/" } ] },
-            "HTTP vs HTTPS": { explanation: "Protocols for web communication. HTTPS adds a layer of security (SSL/TLS encryption) over HTTP.", links: [ { title: "HTTP vs HTTPS (GFG)", url: "https://www.geeksforgeeks.org/difference-between-http-and-https/" } ] },
-            "Common Protocols": { explanation: "Standard sets of rules governing data exchange (e.g., DHCP for IP assignment, ARP for MAC resolution).", links: [ { title: "Network Protocols (GFG)", url: "https://www.geeksforgeeks.org/computer-network-protocols/" } ] },
-            "Routers & Switches": { explanation: "Network devices. Switches connect devices within a LAN; Routers connect different networks.", links: [ { title: "Network Devices (GFG)", url: "https://www.geeksforgeeks.org/computer-network-network-devices/" } ] },
-            "MAC Address": { explanation: "Media Access Control address: Unique hardware identifier assigned to network interfaces.", links: [ { title: "MAC Address (GFG)", url: "https://www.geeksforgeeks.org/introduction-of-mac-address-in-computer-network/" } ] },
-            "Firewalls & VPNs": { explanation: "Security tools. Firewalls filter network traffic; VPNs create secure, encrypted connections over public networks.", links: [ { title: "Firewall Introduction (GFG)", url: "https://www.geeksforgeeks.org/introduction-of-firewall-in-computer-network/" }, { title: "VPN Introduction (GFG)", url: "https://www.geeksforgeeks.org/virtual-private-network-vpn/" } ] },
-            "Scalability": { explanation: "Ability of a system to handle increasing load by adding resources (Vertical: more power to existing machines; Horizontal: more machines).", links: [ { title: "Scalability in System Design (GFG)", url: "https://www.geeksforgeeks.org/system-design-scalability/" } ] },
-            "Load Balancing": { explanation: "Distributing incoming network traffic across multiple servers to ensure no single server is overwhelmed.", links: [ { title: "Load Balancing (GFG)", url: "https://www.geeksforgeeks.org/load-balancing-in-system-design/" } ] },
-            "Caching": { explanation: "Storing copies of frequently accessed data in a temporary storage location (cache) for faster retrieval. Includes CDN, Cache Eviction/Expiration.", links: [ { title: "Caching System Design Concept (GFG)", url: "https://www.geeksforgeeks.org/caching-system-design-concept/" }, { title: "Cache Eviction vs Expiration (GFG)", url: "https://www.geeksforgeeks.org/cache-eviction-vs-expiration-in-system-design/"} ] },
-            "Databases (System Design)": { explanation: "Choosing and using databases (SQL vs NoSQL) effectively in large systems, considering replication, consistency, etc.", links: [ { title: "SQL vs NoSQL (GFG)", url: "https://www.geeksforgeeks.org/difference-between-sql-and-nosql/" } ] },
-            "Sharding": { explanation: "Database partitioning technique that breaks large databases into smaller, faster, more manageable parts (shards).", links: [ { title: "Sharding Introduction (GFG)", url: "https://www.geeksforgeeks.org/database-sharding-system-design-basics/" } ] },
-            "CAP Theorem": { explanation: "Theorem stating a distributed system can only simultaneously guarantee two of three properties: Consistency, Availability, Partition Tolerance.", links: [ { title: "CAP Theorem (GFG)", url: "https://www.geeksforgeeks.org/cap-theorem-in-system-design/" } ] },
-            "Consistency Models": { explanation: "Rules defining how and when updates to data become visible to users/processes in a distributed system (e.g., Strong, Eventual Consistency).", links: [ { title: "Consistency Models (GFG)", url: "https://www.geeksforgeeks.org/consistency-models-in-distributed-system/" } ] },
-            "Availability & Reliability": { explanation: "Availability: System uptime/accessibility. Reliability: System performing correctly without failure.", links: [ { title: "System Design Tutorial (GFG)", url: "https://www.geeksforgeeks.org/system-design-tutorial/" } ] },
-            "Latency & Throughput": { explanation: "Latency: Delay in data transfer. Throughput: Rate of data transfer.", links: [ { title: "System Design Tutorial (GFG)", url: "https://www.geeksforgeeks.org/system-design-tutorial/" } ] },
-            "API Gateway": { explanation: "Server managing API requests, acting as a single entry point for client interactions with backend services.", links: [ { title: "API Gateway (GFG)", url: "https://www.geeksforgeeks.org/what-is-api-gateway-system-design/" } ] },
-            "Rate Limiter": { explanation: "Mechanism controlling the rate of requests sent or received by a network interface.", links: [ { title: "Rate Limiting (GFG)", url: "https://www.geeksforgeeks.org/rate-limiting-system-design/" } ] },
-            "Pub/Sub Systems": { explanation: "Messaging pattern where publishers send messages without knowing specific subscribers, using topics.", links: [ { title: "Publish-Subscribe Model (GFG)", url: "https://www.geeksforgeeks.org/publish-subscribe-model/" } ] },
-            "Leader Election": { explanation: "Process in distributed computing for designating a single process as the organizer/coordinator.", links: [ { title: "Leader Election (GFG)", url: "https://www.geeksforgeeks.org/leader-election-in-distributed-system/" } ] },
-            "Microservices": { explanation: "Architectural style structuring an application as a collection of small, independent services.", links: [ { title: "Microservices Introduction (GFG)", url: "https://www.geeksforgeeks.org/introduction-to-microservices-architecture/" } ] },
-            "Common Problems": { explanation: "Designing solutions for standard problems like URL shorteners, social media feeds, ride-sharing apps, etc.", links: [ { title: "System Design Examples (GFG)", url: "https://www.geeksforgeeks.org/system-design-examples/" } ] }
-        };
-
-        const progressBar = document.getElementById('roadmap-progress-bar');
-        const progressBarText = document.getElementById('progress-bar-text');
-        const progressLabelText = document.getElementById('progress-label-text');
-        const checkboxes = document.querySelectorAll('.topic-checkbox');
-        const totalTopics = checkboxes.length;
-        const storageKey = 'roadmapProgress_v1';
-
-        const topicModalElement = document.getElementById('topicModal');
-        const topicModal = new bootstrap.Modal(topicModalElement);
-        const modalTitleElement = document.getElementById('topicModalLabel');
-        const modalExplanationElement = document.getElementById('topicExplanation');
-        const modalLinksContainerElement = document.getElementById('topicLinksContainer');
-        const modalLinksListElement = document.getElementById('topicLinksList');
-
-        function updateProgressBar() {
-            const completedCheckboxes = document.querySelectorAll('.topic-checkbox:checked');
-            const completedCount = completedCheckboxes.length;
-            const percentage = totalTopics > 0 ? Math.round((completedCount / totalTopics) * 100) : 0;
-
-            if (progressBar) {
-                progressBar.style.width = percentage + '%';
-                progressBar.setAttribute('aria-valuenow', percentage);
-            }
-            if (progressBarText) {
-                progressBarText.textContent = percentage + '%';
-            }
-            if (progressLabelText) {
-                progressLabelText.textContent = `Progress: ${completedCount} / ${totalTopics}`;
-            }
-        }
-
-        function initializeCheckboxStates(lastCheckedIndex) {
-             checkboxes.forEach((checkbox, index) => {
-                 checkbox.disabled = index > lastCheckedIndex + 1;
-             });
-        }
-
-        function loadProgress() {
-            const savedProgress = localStorage.getItem(storageKey);
-            let lastCheckedIndex = -1;
-
-            if (savedProgress) {
-                const completedTopics = JSON.parse(savedProgress);
-                checkboxes.forEach((checkbox, index) => {
-                    const checkboxId = checkbox.id;
-                    const label = document.querySelector(`label[for="${checkboxId}"]`);
-                    if (completedTopics[checkboxId]) {
-                        checkbox.checked = true;
-                        if (label) label.classList.add('completed');
-                        lastCheckedIndex = index;
-                    } else {
-                         checkbox.checked = false;
-                         if (label) label.classList.remove('completed');
-                    }
-                });
-            } else {
-                 checkboxes.forEach(checkbox => {
-                     checkbox.checked = false;
-                     const label = document.querySelector(`label[for="${checkbox.id}"]`);
-                     if (label) label.classList.remove('completed');
-                 });
-            }
-             initializeCheckboxStates(lastCheckedIndex);
-             updateProgressBar();
-        }
-
-        function saveProgress() {
-            const completedTopics = {};
-            checkboxes.forEach(checkbox => {
-                if (checkbox.checked) {
-                    completedTopics[checkbox.id] = true;
-                }
-            });
-            localStorage.setItem(storageKey, JSON.stringify(completedTopics));
-        }
-
-        function showWarningModal(message) {
-             modalTitleElement.textContent = "Action Required";
-             modalExplanationElement.textContent = message;
-             modalLinksContainerElement.style.display = 'none';
-             const downloadBtnContainer = document.getElementById('downloadNotesContainer');
-             if(downloadBtnContainer) downloadBtnContainer.style.display = 'none';
-             topicModal.show();
-        }
-
-        function showTopicModal(topicKey) {
-             const data = topicData[topicKey];
-             const downloadBtnContainer = document.getElementById('downloadNotesContainer');
-
-             if (data) {
-                modalTitleElement.textContent = topicKey;
-                modalExplanationElement.textContent = data.explanation || "No explanation available for this topic.";
-                modalLinksListElement.innerHTML = '';
-
-                if (data.links && data.links.length > 0) {
-                    modalLinksContainerElement.style.display = 'block';
-                    data.links.forEach(link => {
-                        const li = document.createElement('li');
-                        const a = document.createElement('a');
-                        a.href = link.url;
-                        a.textContent = link.title;
-                        a.target = "_blank";
-                        a.rel = "noopener noreferrer";
-                        li.appendChild(a);
-                        modalLinksListElement.appendChild(li);
-                    });
-                } else {
-                    modalLinksContainerElement.style.display = 'none';
-                }
-                if(downloadBtnContainer) downloadBtnContainer.style.display = 'block';
-                topicModal.show();
-             } else {
-                 modalTitleElement.textContent = topicKey;
-                 modalExplanationElement.textContent = "Details for this topic are not yet available.";
-                 modalLinksContainerElement.style.display = 'none';
-                 if(downloadBtnContainer) downloadBtnContainer.style.display = 'block';
-                 topicModal.show();
-             }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-             const allCheckboxesList = Array.from(checkboxes);
-
-             checkboxes.forEach((checkbox, currentIndex) => {
-                 const label = document.querySelector(`label[for="${checkbox.id}"]`);
-                 const topicKey = label ? label.getAttribute('data-topic') : null;
-
-                 // Checkbox CHANGE listener
-                 checkbox.addEventListener('change', () => {
-                     const currentLabel = document.querySelector(`label[for="${checkbox.id}"]`);
-                     if (!currentLabel) return;
-
-                     if (checkbox.checked) {
-                         currentLabel.classList.add('completed');
-                         if (currentIndex + 1 < allCheckboxesList.length) {
-                             allCheckboxesList[currentIndex + 1].disabled = false;
-                         }
-                     } else {
-                         currentLabel.classList.remove('completed');
-                         for (let i = currentIndex + 1; i < allCheckboxesList.length; i++) {
-                             allCheckboxesList[i].disabled = true;
-                             if (allCheckboxesList[i].checked) {
-                                 allCheckboxesList[i].checked = false;
-                                 const subsequentLabel = document.querySelector(`label[for="${allCheckboxesList[i].id}"]`);
-                                 if (subsequentLabel) subsequentLabel.classList.remove('completed');
-                             }
-                         }
-                     }
-                     saveProgress();
-                     updateProgressBar();
-                 });
-
-                 // Label CLICK listener
-                 if (label) {
-                    label.addEventListener('click', (event) => {
-                        event.preventDefault();
-                        event.stopPropagation();
-
-                        if (checkbox.disabled && !checkbox.checked) {
-                            let prevTopicName = 'the previous topic';
-                            if (currentIndex > 0) {
-                                const prevCheckbox = allCheckboxesList[currentIndex - 1];
-                                const prevLabel = document.querySelector(`label[for="${prevCheckbox.id}"]`);
-                                prevTopicName = prevLabel ? prevLabel.getAttribute('data-topic') || prevLabel.textContent : prevTopicName;
-                            }
-                            showWarningModal(`Please complete '${prevTopicName}' first.`);
-                        } else {
-                            if (topicKey) {
-                                showTopicModal(topicKey);
-                            }
-                        }
-                    });
-                 }
-
-                // Checkbox CLICK listener (for warning on disabled)
-                 checkbox.addEventListener('click', (event) => {
-                     if (checkbox.disabled) {
-                         event.preventDefault();
-                         event.stopPropagation();
-
-                         let prevTopicName = 'the previous topic';
-                         if (currentIndex > 0) {
-                             const prevCheckbox = allCheckboxesList[currentIndex - 1];
-                             const prevLabel = document.querySelector(`label[for="${prevCheckbox.id}"]`);
-                             prevTopicName = prevLabel ? prevLabel.getAttribute('data-topic') || prevLabel.textContent : prevTopicName;
-                         }
-                         showWarningModal(`Please complete '${prevTopicName}' first.`);
-                     }
-                 }, true); // Use capture phase
-
-
-             });
-
-            loadProgress();
-        });
-
-    </script>
+    <script src="scripts.js" defer></script>
 
 </body>
 </html>

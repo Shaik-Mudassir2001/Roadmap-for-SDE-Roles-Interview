@@ -1,0 +1,322 @@
+/* General Body Style */
+body {
+    /* padding-top: 70px; /* Adjust if progress bar overlaps content */
+}
+
+/* Background Colors for Sections */
+.bg-dark-section-1 { background-color: #2c3034 !important; }
+.bg-dark-section-2 { background-color: #2a3a4a !important; }
+.bg-dark-section-3 { background-color: #403a4a !important; } /* DSA Section */
+.bg-dark-section-4 { background-color: #4a3a3a !important; }
+.bg-dark-section-5 { background-color: #2c3e50 !important; }
+.bg-dark-section-6 { background-color: #463f3a !important; }
+.bg-dark-section-7 { background-color: #1d3557 !important; }
+.bg-dark-section-8 { background-color: #3c0d4a !important; }
+.bg-dark-section-9 { background-color: #581845 !important; }
+.bg-dark-section-10 { background-color: #2a4a44 !important; }
+
+/* Typography */
+.main-title {
+    font-size: 2.6em;
+    font-weight: 600;
+    color: #e9ecef;
+    padding: 15px 0;
+    margin-top: 20px;
+    margin-bottom: 0.5rem !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+.intro-text {
+    font-size: 1.25em;
+    color: #adb5bd;
+    margin-bottom: 2.5rem !important;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 20px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid #0d6efd;
+    border-radius: 0 5px 5px 0;
+    text-align: center !important;
+}
+.card-header {
+    font-size: 1.4em;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+.card-subtitle {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: #adb5bd;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+/* Progress Bar Styling - Sticky */
+.progress-container {
+    position: sticky;
+    top: 10px;
+    z-index: 1030;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 2.5rem;
+    background-color: rgba(33, 37, 41, 0.95);
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+#progress-label-text {
+    text-align: center;
+    color: #ced4da;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    display: block;
+}
+.progress {
+    position: relative;
+    height: 28px;
+    font-size: 0.95em;
+    background-color: #495057 !important;
+    border: 1px solid #6c757d;
+    padding: 0;
+    border-radius: .375rem;
+    overflow: visible;
+    margin-top: 5px;
+}
+#roadmap-progress-bar {
+    background-color: #6c757d !important; /* Match progress background for base color */
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent); /* Use Bootstrap's striped gradient */
+    background-size: 1rem 1rem; /* Bootstrap's default size */
+    animation: 1s linear infinite progress-bar-stripes; /* Bootstrap's animation */
+    transition: width 0.4s ease;
+    display: block;
+    border-radius: 0;
+    height: 100%;
+    color: transparent;
+}
+#progress-bar-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1em;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    pointer-events: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+    .main-title { font-size: 2.1em; }
+    .intro-text { font-size: 1.0em; padding: 10px 15px; border-left-width: 3px; }
+    .progress-container { width: 95%; padding: 5px 10px;}
+    .progress { height: 22px; font-size: 0.85em;}
+    #progress-bar-text { font-size: 0.85em; }
+    /* Adjust modal table font size on smaller screens */
+    .modal-problem-table { font-size: 0.9em; }
+    .modal-problem-table thead th, .modal-problem-table tbody td { padding: 0.5rem 0.3rem; }
+}
+
+/* Topic Item styling (Used for all sections including DSA now) */
+.step-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.topic-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 5px;
+    padding: 0.6em 1em;
+    min-width: 120px;
+    flex-grow: 1;
+    transition: transform 0.2s ease, opacity 0.3s ease;
+}
+.topic-item:hover {
+    transform: scale(1.03);
+    z-index: 10;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    background-color: rgba(255, 255, 255, 0.15) !important;
+}
+.topic-badge { /* This is the <label> */
+    cursor: pointer;
+    font-size: 1.05em;
+    text-align: center;
+    color: #e9ecef !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    flex-grow: 1;
+    margin: 0;
+    display: block;
+}
+.topic-checkbox { /* Checkbox for broad topics */
+    flex-shrink: 0;
+    width: 1.3em;
+    height: 1.3em;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.topic-checkbox:disabled {
+    cursor: not-allowed;
+}
+.topic-badge.completed { /* Style for completed topic labels */
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+/* Styles for disabled state (applied by JS) */
+.topic-checkbox:disabled + .topic-badge {
+    opacity: 0.6;
+    cursor: default;
+}
+.topic-item[style*="opacity: 0.6"] { /* Target disabled items */
+     opacity: 0.6 !important; /* Ensure opacity is applied */
+}
+
+
+/* Styles for Problem Table inside Modal */
+.modal-problem-table { /* Specific class for table inside modal */
+    width: 100%;
+    margin-bottom: 0;
+    color: #ced4da;
+    font-size: 0.95em;
+    border-collapse: collapse;
+}
+.modal-problem-table thead th {
+    background-color: rgba(255, 255, 255, 0.07);
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+/* --- Column Widths & Alignment (3 columns) --- */
+.modal-problem-table thead th:first-child, /* Checkbox */
+.modal-problem-table tbody td:first-child {
+    width: 10%; /* Slightly more space for checkbox */
+    text-align: center;
+}
+.modal-problem-table thead th:nth-child(2), /* Problem Name */
+.modal-problem-table tbody td:nth-child(2) {
+    width: 70%; /* Give Problem Name most space */
+    text-align: left;
+}
+.modal-problem-table thead th:nth-child(3), /* Solve */
+.modal-problem-table tbody td:nth-child(3) {
+    width: 20%; /* Adjust Solve width */
+    text-align: center;
+}
+/* --- End Column Widths --- */
+
+.modal-problem-table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.modal-problem-table tbody tr:last-child {
+    border-bottom: none;
+}
+.modal-problem-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* Hover effect for rows */
+}
+.modal-problem-table tbody td {
+    padding: 0.75rem 0.5rem;
+    vertical-align: middle;
+}
+.modal-problem-table tbody td:nth-child(2) { /* Problem Name */
+    font-weight: 500;
+    color: #e9ecef;
+}
+.problem-checkbox { /* Checkbox inside the modal table */
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* Removed difficulty badge style */
+
+.problem-link {
+    font-weight: bold;
+    color: #90caf9; /* Lighter blue for links */
+    text-decoration: none;
+}
+.problem-link:hover {
+    color: #bbdefb;
+    text-decoration: underline;
+}
+/* Style for completed problem row inside modal */
+.modal-problem-table .problem-row.completed {
+    opacity: 0.6;
+}
+.modal-problem-table .problem-row.completed td {
+    text-decoration: line-through;
+    text-decoration-color: rgba(255, 255, 255, 0.4);
+}
+.modal-problem-table .problem-row.completed td a {
+   text-decoration: none !important;
+}
+
+
+/* Final Step & Connectors */
+.final-step-badge {
+    background-color: #198754 !important; color: white !important;
+    border: 1px solid #198754 !important; font-size: 1.1em !important;
+    padding: 0.6em 1em !important;
+}
+.section-connector::after {
+   content: '⬇';
+   display: block;
+   text-align: center;
+   font-size: 2.5em;
+   color: #6c757d;
+   margin-top: 10px;
+   margin-bottom: 5px;
+   line-height: 1;
+}
+.final-step {
+    font-weight: bold;
+}
+
+/* Modal Styles */
+#topicModal .modal-body p { margin-bottom: 0.5rem; }
+#topicModal .modal-body h6 { margin-top: 1rem; color: #0dcaf0; }
+#topicModal .modal-body ul { padding-left: 20px; list-style: none; margin-bottom: 1.5rem;}
+#topicModal .modal-body li { margin-bottom: 0.3rem; }
+#downloadNotesBtn { margin-top: 1.5rem; }
+/* Ensure modal table container allows scrolling if needed */
+#modalProblemTableContainer .table-responsive {
+    max-height: 40vh; /* Adjust max height as needed */
+    overflow-y: auto;
+}
+
+
+/* Advice Section Styles */
+.advice-section h5 {
+    color: #0dcaf0;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+.advice-section p, .advice-section li {
+   color: #ced4da;
+   font-size: 1.05em;
+}
+.advice-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+ .advice-section li {
+    margin-bottom: 0.5rem;
+ }
+ .advice-section li svg {
+    margin-right: 8px;
+    vertical-align: middle;
+ }
