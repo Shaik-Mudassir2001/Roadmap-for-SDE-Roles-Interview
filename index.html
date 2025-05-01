@@ -6,7 +6,8 @@
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png"> <link rel="manifest" href="favicon_io/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
 
     <title>Roadmap for SDE Roles Interview</title>
 
@@ -14,10 +15,155 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="styles.css">
 
-</head>
+    <style>
+        #auth-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background-color: #212529; /* Dark background */
+        }
+        .auth-form { display: none; } /* Hide forms initially */
+        .auth-form.active { display: block; } /* Show active form */
+        .auth-toggle-buttons button { margin: 0 5px; }
+         #user-status {
+             position: fixed;
+             top: 15px;
+             right: 15px;
+             z-index: 1100; /* Above progress bar */
+             background-color: rgba(33, 37, 41, 0.9);
+             padding: 5px 10px;
+             border-radius: 5px;
+             color: #adb5bd;
+             font-size: 0.9em;
+         }
+         #user-status button {
+             margin-left: 10px;
+         }
+    </style>
+
+    <script type="module">
+      // Import the functions you need from the SDKs
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+      // Import Auth functions
+      import {
+          getAuth,
+          GoogleAuthProvider,
+          createUserWithEmailAndPassword,
+          signInWithEmailAndPassword,
+          signInWithPopup,
+          signOut,
+          onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+      // Import Firestore functions
+      import {
+          getFirestore,
+          doc,
+          setDoc,
+          getDoc
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyAY2Kur8wPDquV_gOFg5oEZoLuFLR_hrN8",
+        authDomain: "roadmap-for-sde.firebaseapp.com",
+        projectId: "roadmap-for-sde",
+        storageBucket: "roadmap-for-sde.firebasestorage.app",
+        messagingSenderId: "509742930794",
+        appId: "1:509742930794:web:1ded6fd7b15ba3131da313",
+        measurementId: "G-08465Q8Y6Z"
+    };
+
+      // --- Initialize Firebase ---
+      try {
+          const app = initializeApp(firebaseConfig);
+          const auth = getAuth(app);
+          const db = getFirestore(app);
+
+          // Make auth, db, and necessary functions globally available
+          window.auth = auth;
+          window.db = db;
+          window.GoogleAuthProvider = GoogleAuthProvider;
+          window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+          window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+          window.signInWithPopup = signInWithPopup;
+          window.signOut = signOut;
+          window.onAuthStateChanged = onAuthStateChanged;
+          window.doc = doc;
+          window.setDoc = setDoc;
+          window.getDoc = getDoc;
+
+          console.log("Firebase Initialized Successfully!");
+      } catch (error) {
+          console.error("Firebase Initialization Failed:", error);
+          alert("Error initializing Firebase. Check console for details. App may not work correctly.");
+      }
+    </script>
+    </head>
 <body>
 
-    <div class="container">
+    <div id="auth-container" class="container">
+        <h2 class="text-center mb-4">SDE Interview Roadmap</h2>
+        <p class="text-center text-muted mb-4">Please Sign In or Sign Up</p>
+
+        <div class="auth-toggle-buttons text-center mb-4">
+            <button id="show-login-btn" class="btn btn-primary">Login</button>
+            <button id="show-signup-btn" class="btn btn-secondary">Sign Up</button>
+        </div>
+
+        <form id="login-form" class="auth-form">
+            <h4 class="mb-3">Login</h4>
+            <div class="mb-3">
+                <label for="login-email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="login-email" required>
+            </div>
+            <div class="mb-3">
+                <label for="login-password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="login-password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mb-2">Login</button>
+            <div id="login-success" class="auth-message success" style="display: none;"></div>
+            <p id="login-error" class="auth-message error" style="display: none;"></p>
+        </form>
+
+        <form id="signup-form" class="auth-form">
+            <h4 class="mb-3">Sign Up</h4>
+            <div class="mb-3">
+                <label for="signup-email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="signup-email" required>
+            </div>
+            <div class="mb-3">
+                <label for="signup-password" class="form-label">Password (min. 6 characters)</label>
+                <input type="password" class="form-control" id="signup-password" required minlength="6">
+            </div>
+             <div class="mb-3">
+                <label for="signup-password-confirm" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="signup-password-confirm" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100 mb-2">Sign Up</button>
+            <div id="signup-success" class="auth-message success" style="display: none;"></div>
+            <p id="signup-error" class="auth-message error" style="display: none;"></p>
+        </form>
+
+        <hr> <div class="text-center mt-3">
+            <button id="google-signin-btn" class="btn btn-light w-100 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google me-2" viewBox="0 0 16 16">
+                  <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
+                </svg>
+                Sign In with Google
+            </button>
+             <div id="google-success" class="auth-message success" style="display: none;"></div>
+             <p id="google-error" class="auth-message error" style="display: none;"></p>
+        </div>
+
+    </div>
+    <div id="app-container" class="container" style="display: none;">
+
+        <div id="user-status" style="display: none;">
+            <span id="user-email"></span>
+            <button id="logout-btn" class="btn btn-sm btn-danger">Logout</button>
+        </div>
 
         <h1 class="text-center main-title">Roadmap for SDE Roles Interview</h1>
         <p class="intro-text">
@@ -36,7 +182,7 @@
             <div class="card shadow-sm">
                 <div class="card-header text-center bg-primary">1. C++ Language Fundamentals</div>
                 <div class="card-body bg-dark-section-1">
-                    <div class="step-container mb-3">
+                     <div class="step-container mb-3">
                          <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-basics"><label for="check-basics" class="topic-badge" data-topic="Basics">Basics</label></div>
                          <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-functions"><label for="check-functions" class="topic-badge" data-topic="Functions">Functions</label></div>
                          <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-pointers"><label for="check-pointers" class="topic-badge" data-topic="Pointers & Refs">Pointers & Refs</label></div>
@@ -56,7 +202,7 @@
 
         <div class="roadmap-section mb-3 section-connector">
              <div class="card shadow-sm">
-                <div class="card-header text-center bg-success">2. STL (Standard Template Library)</div>
+                 <div class="card-header text-center bg-success">2. STL (Standard Template Library)</div>
                  <div class="card-body bg-dark-section-2">
                      <div class="step-container mb-3">
                          <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-why-stl"><label for="check-why-stl" class="topic-badge" data-topic="Why use STL?">Why use STL?</label></div>
@@ -78,13 +224,11 @@
              </div>
         </div>
 
-         <div class="roadmap-section mb-3 section-connector">
+        <div class="roadmap-section mb-3 section-connector">
              <div class="card shadow-sm">
-                 <div class="card-header text-center bg-warning text-dark">
-                     3. DSA (Data Structures & Algorithms)
-                 </div>
+                 <div class="card-header text-center bg-warning text-dark">3. DSA (Data Structures & Algorithms)</div>
                  <div class="card-body bg-dark-section-3">
-                      <h6 class="card-subtitle mb-2 text-center">Linear Data Structures</h6>
+                    <h6 class="card-subtitle mb-2 text-center">Linear Data Structures</h6>
                       <div class="step-container mb-3">
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-arrays-strings"><label for="check-arrays-strings" class="topic-badge" data-topic="Arrays & Strings">Arrays & Strings</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-ll"><label for="check-ll" class="topic-badge" data-topic="Linked Lists">Linked Lists</label></div>
@@ -107,29 +251,29 @@
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-sliding"><label for="check-sliding" class="topic-badge" data-topic="Sliding Window">Sliding Window</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-two-pointers"><label for="check-two-pointers" class="topic-badge" data-topic="Two Pointers">Two Pointers</label></div>
                       </div>
-                 </div> </div> </div> <div class="roadmap-section mb-3 section-connector">
+                 </div>
+            </div>
+        </div>
+
+        <div class="roadmap-section mb-3 section-connector">
               <div class="card shadow-sm">
-                  <div class="card-header text-center bg-danger">
-                      4. Practice & Next Steps
-                  </div>
-                  <div class="card-body bg-dark-section-4">
-                      <div class="step-container">
+                   <div class="card-header text-center bg-danger">4. Practice & Next Steps</div>
+                   <div class="card-body bg-dark-section-4">
+                       <div class="step-container">
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-cpp-practice"><label for="check-cpp-practice" class="topic-badge" data-topic="C++ Practice">C++ Practice</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-stl-mastery"><label for="check-stl-mastery" class="topic-badge" data-topic="STL Mastery">STL Mastery</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-dsa-sheet"><label for="check-dsa-sheet" class="topic-badge" data-topic="DSA Sheet (Striver)">DSA Sheet (Striver)</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-leetcode"><label for="check-leetcode" class="topic-badge" data-topic="LeetCode / Contests">LeetCode / Contests</label></div>
                       </div>
-                  </div>
+                   </div>
               </div>
          </div>
 
-         <div class="roadmap-section mb-3 section-connector">
+        <div class="roadmap-section mb-3 section-connector">
               <div class="card shadow-sm">
-                  <div class="card-header text-center" style="background-color: #0077b6; color: white;">
-                      5. Operating Systems
-                  </div>
+                  <div class="card-header text-center" style="background-color: #0077b6; color: white;">5. Operating Systems</div>
                   <div class="card-body bg-dark-section-5">
-                       <h6 class="card-subtitle mb-2 text-center">Core Concepts</h6>
+                    <h6 class="card-subtitle mb-2 text-center">Core Concepts</h6>
                       <div class="step-container">
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-proc-thread"><label for="check-proc-thread" class="topic-badge" data-topic="Process vs Thread">Process vs Thread</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-concurrency"><label for="check-concurrency" class="topic-badge" data-topic="Concurrency">Concurrency</label></div>
@@ -148,13 +292,11 @@
               </div>
          </div>
 
-         <div class="roadmap-section mb-3 section-connector">
+        <div class="roadmap-section mb-3 section-connector">
               <div class="card shadow-sm">
-                  <div class="card-header text-center" style="background-color: #fca311; color: black;">
-                      6. Database Management Systems (DBMS)
-                  </div>
+                  <div class="card-header text-center" style="background-color: #fca311; color: black;">6. Database Management Systems (DBMS)</div>
                   <div class="card-body bg-dark-section-6">
-                      <h6 class="card-subtitle mb-2 text-center">Core Concepts & SQL</h6>
+                    <h6 class="card-subtitle mb-2 text-center">Core Concepts & SQL</h6>
                       <div class="step-container mb-3">
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-dbms-rdbms"><label for="check-dbms-rdbms" class="topic-badge" data-topic="DBMS vs RDBMS">DBMS vs RDBMS</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-data-models"><label for="check-data-models" class="topic-badge" data-topic="Data Models">Data Models (ER Model)</label></div>
@@ -180,11 +322,9 @@
 
         <div class="roadmap-section mb-3 section-connector">
               <div class="card shadow-sm">
-                  <div class="card-header text-center" style="background-color: #00b4d8; color: white;">
-                      7. Computer Networks
-                  </div>
+                  <div class="card-header text-center" style="background-color: #00b4d8; color: white;">7. Computer Networks</div>
                   <div class="card-body bg-dark-section-7">
-                       <h6 class="card-subtitle mb-2 text-center">Fundamentals & Protocols</h6>
+                     <h6 class="card-subtitle mb-2 text-center">Fundamentals & Protocols</h6>
                       <div class="step-container">
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-models"><label for="check-models" class="topic-badge" data-topic="OSI & TCP/IP Models">OSI & TCP/IP Models</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-net-types"><label for="check-net-types" class="topic-badge" data-topic="Network Types">Network Types (LAN, WAN)</label></div>
@@ -203,13 +343,11 @@
               </div>
          </div>
 
-         <div class="roadmap-section mb-3 section-connector">
+        <div class="roadmap-section mb-3 section-connector">
               <div class="card shadow-sm">
-                  <div class="card-header text-center" style="background-color: #8338ec; color: white;">
-                      8. System Design
-                  </div>
+                  <div class="card-header text-center" style="background-color: #8338ec; color: white;">8. System Design</div>
                   <div class="card-body bg-dark-section-8">
-                       <h6 class="card-subtitle mb-2 text-center">Core Concepts & Components</h6>
+                     <h6 class="card-subtitle mb-2 text-center">Core Concepts & Components</h6>
                       <div class="step-container mb-3">
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-scale"><label for="check-scale" class="topic-badge" data-topic="Scalability">Scalability (Vertical/Horizontal)</label></div>
                           <div class="topic-item"><input type="checkbox" class="topic-checkbox" id="check-lb"><label for="check-lb" class="topic-badge" data-topic="Load Balancing">Load Balancing</label></div>
@@ -234,13 +372,11 @@
               </div>
          </div>
 
-         <div class="roadmap-section mb-3 section-connector">
+        <div class="roadmap-section mb-3 section-connector">
               <div class="card shadow-sm">
-                  <div class="card-header text-center bg-secondary">
-                      9. Beyond the Roadmap: Next Steps & Job Search
-                  </div>
-                  <div class="card-body bg-dark-section-9 advice-section text-center">
-                      <h5>Consolidate Your Learning</h5>
+                   <div class="card-header text-center bg-secondary">9. Beyond the Roadmap: Next Steps & Job Search</div>
+                   <div class="card-body bg-dark-section-9 advice-section text-center">
+                     <h5>Consolidate Your Learning</h5>
                       <p>You've covered a lot! Now focus on reinforcing these concepts:</p>
                       <ul class="text-start d-inline-block">
                           <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill text-success" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg> <strong>Aptitude Preparation:</strong> Many company screenings include aptitude tests. Practice quantitative, logical reasoning, and verbal ability questions. A good resource is <a href="https://www.indiabix.com/" target="_blank" rel="noopener noreferrer">IndiaBIX</a>.</li>
@@ -260,21 +396,19 @@
               </div>
          </div>
 
-         <div class="roadmap-section mb-3">
+        <div class="roadmap-section mb-3">
               <div class="card shadow-sm border-success">
-                  <div class="card-header text-center bg-dark">
-                      10. End Goal
-                  </div>
+                  <div class="card-header text-center bg-dark">10. End Goal</div>
                   <div class="card-body bg-dark-section-10 text-center">
-                      <div class="step-container justify-content-center">
+                       <div class="step-container justify-content-center">
                           <span class="badge p-3 final-step final-step-badge">Interview Ready!</span>
                       </div>
                   </div>
               </div>
           </div>
-
-    </div> <div class="modal fade" id="topicModal" tabindex="-1" aria-labelledby="topicModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        </div>
+    <div class="modal fade" id="topicModal" tabindex="-1" aria-labelledby="topicModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="topicModalLabel">Topic Details</h5>
@@ -299,7 +433,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="scripts.js" defer></script>
 

@@ -320,3 +320,57 @@ body {
     margin-right: 8px;
     vertical-align: middle;
  }
+/* === Added Styles for Auth Feedback === */
+
+/* General Auth Message Styling */
+.auth-message {
+    padding: 10px 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9em;
+    opacity: 0; /* Start hidden */
+    height: 0; /* Start with no height */
+    overflow: hidden; /* Hide content when height is 0 */
+    transform: translateY(-10px); /* Start slightly up */
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out, height 0.3s ease-out, padding 0.3s ease-out, margin 0.3s ease-out; /* Animate all properties */
+    border: 1px solid transparent; /* Base border */
+}
+
+/* Class to trigger the fade/slide-in animation */
+.auth-message.show {
+    opacity: 1;
+    transform: translateY(0);
+    height: auto; /* Animate height */
+    /* Re-apply padding/margin if needed, or set initial values */
+    padding: 10px 15px;
+    margin-top: 15px;
+}
+
+/* Success Message Styles */
+.auth-message.success {
+    background-color: rgba(40, 167, 69, 0.15); /* Lighter green bg */
+    color: #28a745; /* Bootstrap success green */
+    border-color: rgba(40, 167, 69, 0.3);
+}
+
+/* Error Message Styles */
+.auth-message.error {
+    background-color: rgba(220, 53, 69, 0.1); /* Lighter red bg */
+    color: #dc3545; /* Bootstrap error red */
+    border-color: rgba(220, 53, 69, 0.3);
+}
+
+/* Shake animation for errors */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+/* Add this class to the form/button temporarily on error */
+.shake-error {
+    animation: shake 0.4s ease-in-out both;
+}
+
+/* === End Added Styles === */
